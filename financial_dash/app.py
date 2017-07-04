@@ -3,16 +3,17 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 import plotly.graph_objs as go
-
 import pandas as pd
-
 import quandl
+
+from financial_dash.components.series_plot import SeriesPlot
 
 # Initialize the app
 app = dash.Dash()
 
 # Pull financial data down from quandl
 df = quandl.get('FRED/GDP')
+series_plot = SeriesPlot(df)
 
 colors = {
     'background' : '#111111',
