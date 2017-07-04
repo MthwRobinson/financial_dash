@@ -1,0 +1,14 @@
+[
+  {
+    "name" : "Unemployment Rate",
+    "quandlCode": "FRED/UNRATE"
+  },
+  {
+    "name" : "Inflation",
+    "quandlCode" : "RATEINF/INFLATION_USA"
+  },
+  {
+    "name" : "Consumer Confidence",
+    "quandlCode" : "UMICH/SOC1"
+  }
+]

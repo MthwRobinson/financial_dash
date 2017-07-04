@@ -6,7 +6,7 @@ import plotly.graph_objs as go
 
 import pandas as pd
 
-from financial_dash.style.colors
+import financial_dash.style.colors as colors
 
 class SeriesPlot():
     """
@@ -14,21 +14,21 @@ class SeriesPlot():
         from Quandl
     """
 
-    def __init__(self, df):
+    def __init__(self, data):
         """
         data is a list of dataframes returned from
             a service call to quandl
         """
 
-        self.series_plot = html.Div(children=[
+        self.div = html.Div(children=[
 
             # html.H1(children='Look at my awesome plot!'),
             dcc.Graph(
                 id='gdp',
                 figure={
                     'data' : [go.Scatter(
-                        x=df.index,
-                        y=df['Value'],
+                        x=data['dates'],
+                        y=data['values'],
                         mode='line',
                         opacity=0.7
                     )],

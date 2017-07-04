@@ -7,48 +7,17 @@ import pandas as pd
 import quandl
 
 from financial_dash.components.series_plot import SeriesPlot
+from financial_dash.services.quandl import QuandlService
 
 # Initialize the app
 app = dash.Dash()
 
 # Pull financial data down from quandl
-df = quandl.get('FRED/GDP')
-series_plot = SeriesPlot(df)
+qs = QuandlService()
+data = qs.get_quandl(from_file = True)
+series_plot = SeriesPlot(data[0])
 
-colors = {
-    'background' : '#111111',
-    'text' : '#7FDBFF'
-}
-
-app.layout = html.Div(children=[
-
-    # html.H1(children='Look at my awesome plot!'),
-    dcc.Graph(
-        id='gdp',
-        figure={
-            'data' : [go.Scatter(
-                x=df.index,
-                y=df['Value'],
-                mode='line',
-                opacity=0.7
-            )],
-            'layout' : {
-                'title' : 'GDP Over Time',
-                'font' : {
-                    'color' : colors['text']
-                },
-                'plot_bgcolor' : colors['background'],
-                'paper_bgcolor' : colors['background']
-            }
-        }
-    ),
-    dcc.Dropdown(
-        options = [
-            {'label' : 'GDP', 'value' : 'GDP'}
-        ],
-        value = 'GDP'
-    )
-])
+app.layout = series_plot.div
 
 app.css.append_css({
     "external_url" : "https://codepen.io/chriddyp/pen/bWLwgP.css"
