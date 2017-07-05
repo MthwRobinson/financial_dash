@@ -31,6 +31,7 @@ class SeriesPlot():
 
         ])
 
+
     def build_figure(self, selected_series):
         """
         Plots the series returned by quandl
