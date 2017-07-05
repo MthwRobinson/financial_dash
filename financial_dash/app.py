@@ -15,7 +15,7 @@ app = dash.Dash()
 # Pull financial data down from quandl
 qs = QuandlService()
 data = qs.get_quandl(from_file = True)
-series_plot = SeriesPlot(data[0])
+series_plot = SeriesPlot(data)
 
 app.layout = series_plot.div
 
