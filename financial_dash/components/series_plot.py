@@ -65,7 +65,7 @@ class SeriesPlot():
                     't' : 10,
                     'r' : 10
                 },
-                legend = {'x':1, 'y':1},
+                legend = {'x':.85, 'y':0},
                 hovermode = 'closest',
                 plot_bgcolor = colors.series_plot['background'],
                 paper_bgcolor = colors.series_plot['background']
